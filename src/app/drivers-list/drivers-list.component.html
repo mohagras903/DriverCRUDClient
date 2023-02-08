@@ -1,3 +1,8 @@
-<div *ngFor="let driver of drivers">
-  <DriverItem></DriverItem>
+<div *ngFor="let driver of drivers; index as i">
+  <DriverItem
+    [driver]="driver"
+    [index]="i"
+    (listUpdateEvent)="receiveUpdatedList($event)"
+  ></DriverItem>
 </div>
+<h2>Create new</h2>

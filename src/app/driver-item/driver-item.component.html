@@ -1,16 +1,13 @@
 <fieldset>
-  <legend>Driver 1</legend>
+  <legend>Driver {{ index + 1 }}</legend>
   <form>
     <div class="horizontal-centered-container">
       <fa-icon [icon]="userIcon" class="icon"></fa-icon>
       <input
         type="text"
         [disabled]="!editMode"
-        value="Mohamed Hagras"
-        [ngClass]="{
-          normal: !editMode,
-          active: editMode
-        }"
+        value="{{ driver.FirstName }}"
+        [ngClass]="{ normal: !editMode, active: editMode }"
       />
     </div>
     <div class="horizontal-centered-container">
@@ -18,7 +15,7 @@
       <input
         type="text"
         [disabled]="!editMode"
-        value="mohmhagras@gmail.com"
+        value="{{ driver.Email }}"
         [ngClass]="{
           normal: !editMode,
           active: editMode
@@ -37,5 +34,39 @@
         }"
       />
     </div>
+    <button
+      class="horizontal-centered-container"
+      [ngClass]="{
+        hidden: !editMode,
+        visible: editMode
+      }"
+    >
+      <fa-icon [icon]="saveIcon" class="icon"></fa-icon>
+      Save
+    </button>
   </form>
+  <div>
+    <button
+      class="horizontal-centered-container"
+      [ngClass]="{
+        hidden: editMode,
+        visible: !editMode
+      }"
+      (click)="toggleEditMode()"
+    >
+      <fa-icon [icon]="editIcon" class="icon"></fa-icon>
+      Update
+    </button>
+    <button
+      class="horizontal-centered-container"
+      [ngClass]="{
+        hidden: editMode,
+        visible: !editMode
+      }"
+      (click)="handleDeleteItem()"
+    >
+      <fa-icon [icon]="deleteIcon" class="icon"></fa-icon>
+      Delete
+    </button>
+  </div>
 </fieldset>

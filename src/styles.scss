@@ -30,3 +30,22 @@ body {
   font-size: 1.2rem;
   color: colors.$primary;
 }
+
+button {
+  font-size: 1rem;
+  padding: 6px 16px;
+  background-color: transparent;
+  color: colors.$primary;
+  font-weight: 600;
+  border: 1px solid colors.$primary;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
