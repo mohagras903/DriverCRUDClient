@@ -1,0 +1,26 @@
+@use "../../colors";
+fieldset {
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px 8px;
+  legend {
+    font-size: 1.2rem;
+  }
+  input {
+    outline: none;
+    padding: 4px 8px;
+    color: black;
+    opacity: 1;
+    width: 100%;
+    max-width: 250px;
+    font-size: 1.2rem;
+    box-shadow: none;
+  }
+}
+
+.normal {
+  border: none;
+}
+.active {
+  border: 1px solid colors.$secondary;
+}

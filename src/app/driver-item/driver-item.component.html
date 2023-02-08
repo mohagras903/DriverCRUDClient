@@ -1,6 +1,41 @@
 <fieldset>
   <legend>Driver 1</legend>
   <form>
-    <input type="text" disabled="!editMode" value=""/>
+    <div class="horizontal-centered-container">
+      <fa-icon [icon]="userIcon" class="icon"></fa-icon>
+      <input
+        type="text"
+        [disabled]="!editMode"
+        value="Mohamed Hagras"
+        [ngClass]="{
+          normal: !editMode,
+          active: editMode
+        }"
+      />
+    </div>
+    <div class="horizontal-centered-container">
+      <fa-icon [icon]="emailIcon" class="icon"></fa-icon>
+      <input
+        type="text"
+        [disabled]="!editMode"
+        value="mohmhagras@gmail.com"
+        [ngClass]="{
+          normal: !editMode,
+          active: editMode
+        }"
+      />
+    </div>
+    <div class="horizontal-centered-container">
+      <fa-icon [icon]="phoneIcon" class="icon"></fa-icon>
+      <input
+        type="text"
+        [disabled]="!editMode"
+        value="+201277074935"
+        [ngClass]="{
+          normal: !editMode,
+          active: editMode
+        }"
+      />
+    </div>
   </form>
 </fieldset>
