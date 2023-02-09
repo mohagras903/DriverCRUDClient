@@ -1,6 +1,6 @@
 <fieldset>
   <legend>Create a new driver</legend>
-  <form>
+  <form (submit)="handleSaveData($event)">
     <div class="horizontal-centered-container">
       <fa-icon [icon]="userIcon" class="icon"></fa-icon>
       <input
@@ -24,7 +24,7 @@
     <div class="horizontal-centered-container">
       <fa-icon [icon]="emailIcon" class="icon"></fa-icon>
       <input
-        type="text"
+        type="email"
         placeholder="Email Address"
         [value]="email"
         (input)="email = getValue($event)"
@@ -41,10 +41,7 @@
         required
       />
     </div>
-    <button
-      class="horizontal-centered-container"
-      (click)="handleSaveData($event)"
-    >
+    <button class="horizontal-centered-container">
       <fa-icon [icon]="saveIcon" class="icon"></fa-icon>
       Save
     </button>

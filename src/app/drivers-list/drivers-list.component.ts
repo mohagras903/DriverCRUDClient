@@ -21,14 +21,13 @@ export class DriversListComponent implements OnInit {
         return;
       }
       this.drivers = await res.json();
-      console.log(this.drivers);
     } catch (error) {
       alert(error);
     }
   }
 
-  receiveUpdatedList($event: Driver[]) {
+  receiveUpdatedList(list: Driver[]) {
     console.log('Got it');
-    this.drivers = $event;
+    this.drivers = list;
   }
 }

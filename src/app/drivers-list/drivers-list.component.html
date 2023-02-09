@@ -5,4 +5,4 @@
     (listUpdateEvent)="receiveUpdatedList($event)"
   ></DriverItem>
 </div>
-<CreateDriver></CreateDriver>
+<CreateDriver (listUpdateEvent)="receiveUpdatedList($event)"></CreateDriver>

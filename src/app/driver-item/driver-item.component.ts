@@ -77,7 +77,9 @@ export class DriverItemComponent implements OnInit, OnChanges {
         alert(await res.text());
         return;
       }
-      this.listUpdateEvent.emit(await res.json());
+      const result = await res.json();
+      console.log(result);
+      this.listUpdateEvent.emit(result);
     } catch (error) {
       alert(error);
     }

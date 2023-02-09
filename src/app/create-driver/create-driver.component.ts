@@ -36,29 +36,30 @@ export class CreateDriverComponent {
   async handleSaveData(event: Event) {
     event.preventDefault();
     const { firstName, lastName, email, phoneNumber } = this;
-    if ([firstName, lastName, email, phoneNumber].includes('')) {
-      alert('Please fill all form fields in order to create a new driver!');
-      return;
-    }
+
     try {
-      console.log('In try');
       const res = await fetch(`https://localhost:7178/Driver`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          FirstName: this.firstName,
-          LastName: this.lastName,
-          Email: this.email,
-          PhoneNumber: this.phoneNumber,
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
         }),
       });
       if (res.status >= 400) {
         alert(await res.text());
         return;
       }
-      this.listUpdateEvent.emit(await res.json());
+      const result = await res.json();
+      this.listUpdateEvent.emit(result);
+      this.firstName = '';
+      this.lastName = '';
+      this.email = '';
+      this.phoneNumber = '';
     } catch (error) {
       alert(error);
     }
