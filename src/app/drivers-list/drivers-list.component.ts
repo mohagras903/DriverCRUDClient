@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Driver } from 'types';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'DriversList',
   templateUrl: './drivers-list.component.html',
@@ -10,7 +11,7 @@ export class DriversListComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const res = await fetch('https://localhost:7178/Driver', {
+      const res = await fetch(environment.apiURL, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

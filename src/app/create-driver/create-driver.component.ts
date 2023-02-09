@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { Driver } from 'types';
 import {
   faUser,
@@ -38,7 +39,7 @@ export class CreateDriverComponent {
     const { firstName, lastName, email, phoneNumber } = this;
 
     try {
-      const res = await fetch(`https://localhost:7178/Driver`, {
+      const res = await fetch(environment.apiURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

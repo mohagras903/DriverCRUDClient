@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { Driver } from 'types';
 import {
   faUser,
@@ -46,15 +47,12 @@ export class DriverItemComponent {
 
   async handleDeleteItem() {
     try {
-      const res = await fetch(
-        `https://localhost:7178/Driver/${this.driver.id}`,
-        {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const res = await fetch(`${environment.apiURL}/${this.driver.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       if (res.status >= 400) {
         alert(await res.text());
         return;
@@ -73,7 +71,7 @@ export class DriverItemComponent {
     const { firstName, lastName, email, phoneNumber, id } = this.driver;
 
     try {
-      const res = await fetch(`https://localhost:7178/Driver`, {
+      const res = await fetch(environment.apiURL, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
