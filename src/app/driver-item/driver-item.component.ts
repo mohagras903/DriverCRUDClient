@@ -1,12 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  Output,
-  EventEmitter,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Driver } from 'types';
 import {
   faUser,
@@ -22,7 +14,7 @@ import {
   templateUrl: './driver-item.component.html',
   styleUrls: ['./driver-item.component.scss'],
 })
-export class DriverItemComponent implements OnInit, OnChanges {
+export class DriverItemComponent {
   editMode = false;
   userIcon = faUser;
   emailIcon = faEnvelope;
@@ -42,16 +34,6 @@ export class DriverItemComponent implements OnInit, OnChanges {
 
   @Output() listUpdateEvent = new EventEmitter<Driver[]>();
 
-  ngOnInit() {
-    //console.log(this.driver);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    /*
-    console.log(this.driver);
-    console.log(changes);
-    */
-  }
   toggleEditMode() {
     console.log(this.driver);
 
@@ -80,6 +62,37 @@ export class DriverItemComponent implements OnInit, OnChanges {
       const result = await res.json();
       console.log(result);
       this.listUpdateEvent.emit(result);
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async handleSaveUpdatedData(event: Event) {
+    event.preventDefault();
+    console.log(this.driver);
+    const { firstName, lastName, email, phoneNumber, id } = this.driver;
+
+    try {
+      const res = await fetch(`https://localhost:7178/Driver`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+        }),
+      });
+      if (res.status >= 400) {
+        alert(await res.text());
+        return;
+      }
+      const result = await res.json();
+      this.listUpdateEvent.emit(result);
+      this.editMode = false;
     } catch (error) {
       alert(error);
     }

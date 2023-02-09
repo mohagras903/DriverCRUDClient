@@ -1,19 +1,43 @@
 <fieldset>
   <legend>Driver {{ index + 1 }}</legend>
-  <form>
-    <div class="horizontal-centered-container">
+  <form (submit)="handleSaveUpdatedData($event)">
+    <div class="horizontal-centered-container" *ngIf="!editMode">
       <fa-icon [icon]="userIcon" class="icon"></fa-icon>
       <input
         type="text"
         [disabled]="!editMode"
-        [value]="driver.firstName"
+        [value]="driver.firstName + ' ' + driver.lastName"
         [ngClass]="{ normal: !editMode, active: editMode }"
       />
+    </div>
+    <div *ngIf="editMode">
+      <div class="horizontal-centered-container">
+        <fa-icon [icon]="userIcon" class="icon"></fa-icon>
+        <input
+          type="text"
+          [value]="driver.firstName"
+          (input)="driver.firstName = getValue($event)"
+          placeholder="First Name"
+          required
+          class="active"
+        />
+      </div>
+      <div class="horizontal-centered-container">
+        <fa-icon [icon]="userIcon" class="icon"></fa-icon>
+        <input
+          type="text"
+          placeholder="Last Name"
+          [value]="driver.lastName"
+          (input)="driver.lastName = getValue($event)"
+          required
+          class="active"
+        />
+      </div>
     </div>
     <div class="horizontal-centered-container">
       <fa-icon [icon]="emailIcon" class="icon"></fa-icon>
       <input
-        type="text"
+        type="email"
         [disabled]="!editMode"
         [value]="driver.email"
         (input)="driver.email = getValue($event)"

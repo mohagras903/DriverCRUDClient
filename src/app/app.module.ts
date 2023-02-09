@@ -8,6 +8,7 @@ import { DriversListComponent } from './drivers-list/drivers-list.component';
 import { DriverItemComponent } from './driver-item/driver-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateDriverComponent } from './create-driver/create-driver.component';
+import { DriverFormComponent } from './driver-form/driver-form.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CreateDriverComponent } from './create-driver/create-driver.component';
     DriversListComponent,
     DriverItemComponent,
     CreateDriverComponent,
+    DriverFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],
