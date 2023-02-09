@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Driver } from 'types';
 import {
   faUser,
@@ -14,7 +22,7 @@ import {
   templateUrl: './driver-item.component.html',
   styleUrls: ['./driver-item.component.scss'],
 })
-export class DriverItemComponent implements OnInit {
+export class DriverItemComponent implements OnInit, OnChanges {
   editMode = false;
   userIcon = faUser;
   emailIcon = faEnvelope;
@@ -22,26 +30,42 @@ export class DriverItemComponent implements OnInit {
   editIcon = faEdit;
   deleteIcon = faTrash;
   saveIcon = faSave;
+  TestName = '';
   @Input() driver: Driver = {
-    FirstName: '',
-    LastName: '',
-    Email: '',
-    PhoneNumber: '',
-    Id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    id: '',
   };
   @Input() index = 0;
 
   @Output() listUpdateEvent = new EventEmitter<Driver[]>();
+
   ngOnInit() {
+    //console.log(this.driver);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    /*
     console.log(this.driver);
+    console.log(changes);
+    */
   }
   toggleEditMode() {
+    console.log(this.driver);
+
     this.editMode = !this.editMode;
   }
+
+  getValue(event: Event): string {
+    return (event.target as HTMLInputElement).value;
+  }
+
   async handleDeleteItem() {
     try {
       const res = await fetch(
-        `https://localhost:7178/Driver/${this.driver.Id}`,
+        `https://localhost:7178/Driver/${this.driver.id}`,
         {
           method: 'DELETE',
           headers: {
@@ -53,7 +77,6 @@ export class DriverItemComponent implements OnInit {
         alert(await res.text());
         return;
       }
-      //this.drivers = await res.json();
       this.listUpdateEvent.emit(await res.json());
     } catch (error) {
       alert(error);

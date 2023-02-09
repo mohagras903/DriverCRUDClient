@@ -6,7 +6,7 @@
       <input
         type="text"
         [disabled]="!editMode"
-        value="{{ driver.FirstName }}"
+        [value]="driver.firstName"
         [ngClass]="{ normal: !editMode, active: editMode }"
       />
     </div>
@@ -15,7 +15,8 @@
       <input
         type="text"
         [disabled]="!editMode"
-        value="{{ driver.Email }}"
+        [value]="driver.email"
+        (input)="driver.email = getValue($event)"
         [ngClass]="{
           normal: !editMode,
           active: editMode
@@ -27,7 +28,8 @@
       <input
         type="text"
         [disabled]="!editMode"
-        value="+201277074935"
+        [value]="driver.phoneNumber"
+        (input)="driver.phoneNumber = getValue($event)"
         [ngClass]="{
           normal: !editMode,
           active: editMode
@@ -40,6 +42,7 @@
         hidden: !editMode,
         visible: editMode
       }"
+      role="submit"
     >
       <fa-icon [icon]="saveIcon" class="icon"></fa-icon>
       Save

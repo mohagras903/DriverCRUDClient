@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { DriversListComponent } from './drivers-list/drivers-list.component';
 import { DriverItemComponent } from './driver-item/driver-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CreateDriverComponent } from './create-driver/create-driver.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     DriversListComponent,
     DriverItemComponent,
+    CreateDriverComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],

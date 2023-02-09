@@ -1,0 +1,52 @@
+<fieldset>
+  <legend>Create a new driver</legend>
+  <form>
+    <div class="horizontal-centered-container">
+      <fa-icon [icon]="userIcon" class="icon"></fa-icon>
+      <input
+        type="text"
+        [value]="firstName"
+        (input)="firstName = getValue($event)"
+        placeholder="First Name"
+        required
+      />
+    </div>
+    <div class="horizontal-centered-container">
+      <fa-icon [icon]="userIcon" class="icon"></fa-icon>
+      <input
+        type="text"
+        placeholder="Last Name"
+        [value]="lastName"
+        (input)="lastName = getValue($event)"
+        required
+      />
+    </div>
+    <div class="horizontal-centered-container">
+      <fa-icon [icon]="emailIcon" class="icon"></fa-icon>
+      <input
+        type="text"
+        placeholder="Email Address"
+        [value]="email"
+        (input)="email = getValue($event)"
+        required
+      />
+    </div>
+    <div class="horizontal-centered-container">
+      <fa-icon [icon]="phoneIcon" class="icon"></fa-icon>
+      <input
+        type="text"
+        placeholder="Phone Number"
+        [value]="phoneNumber"
+        (input)="phoneNumber = getValue($event)"
+        required
+      />
+    </div>
+    <button
+      class="horizontal-centered-container"
+      (click)="handleSaveData($event)"
+    >
+      <fa-icon [icon]="saveIcon" class="icon"></fa-icon>
+      Save
+    </button>
+  </form>
+</fieldset>
