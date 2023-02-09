@@ -17,6 +17,8 @@ import {
     '../driver-item/driver-item.component.scss',
   ],
 })
+
+//TODO: render this component conditionally as a popup based on a "Create" button click
 export class CreateDriverComponent {
   editMode = false;
   userIcon = faUser;
@@ -37,7 +39,7 @@ export class CreateDriverComponent {
   async handleSaveData(event: Event) {
     event.preventDefault();
     const { firstName, lastName, email, phoneNumber } = this;
-
+    //TODO: add strict validation to submission results (e.g. phoneNumber)
     try {
       const res = await fetch(environment.apiURL, {
         method: 'POST',

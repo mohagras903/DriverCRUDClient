@@ -69,6 +69,7 @@ export class DriverItemComponent {
     event.preventDefault();
     console.log(this.driver);
     const { firstName, lastName, email, phoneNumber, id } = this.driver;
+    //TODO: add strict validation to submission results (e.g. phoneNumber)
 
     try {
       const res = await fetch(environment.apiURL, {
